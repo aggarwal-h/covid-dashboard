@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model abc {
+  number Int @id
+}
+
+model covidtimeseriesworldwide {
+  date          DateTime @id @db.Date
+  confirmed     Int?     @default(0)
+  recovered     Int?     @default(0)
+  deaths        Int?     @default(0)
+  increase_rate Float?
+}
+
+model covidtimeseriescountry {
+  date      DateTime @db.Date
+  country   String   @db.VarChar(80)
+  confirmed Int?     @default(0)
+  recovered Int?     @default(0)
+  deaths    Int?     @default(0)
+
+  @@id([date, country], map: "CovidTimeSeriesCountry_pkey")
+}
+
+model covid_daily_timeseries_by_country {
+  date              DateTime @db.Date
+  country_code      String?  @db.Char(2)
+  country           String   @db.VarChar(80)
+  who_region        String?  @db.VarChar(5)
+  new_cases         Int?     @default(0)
+  cumulative_cases  Int?     @default(0)
+  new_deaths        Int?     @default(0)
+  cumulative_deaths Int?     @default(0)
+
+  @@id([date, country])
+}
