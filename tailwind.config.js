@@ -18,6 +18,13 @@ module.exports = {
       borderWidth: {
         1: "1px",
       },
+      colors: {
+        dark: {
+          700: "#242731",
+          800: "#1f2128",
+          900: "#191b20",
+        },
+      },
     },
   },
   plugins: [],

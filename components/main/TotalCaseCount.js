@@ -5,7 +5,7 @@ import MiniChartCard from "./chart-cards/MiniChartCard";
 
 const PREVIOUS_DAYS = 7;
 
-function TotalCaseCount({ country }) {
+function TotalCaseCount({ dark, country }) {
   const queryData = usePreviousDays(PREVIOUS_DAYS, country);
 
   const options = {
@@ -24,9 +24,16 @@ function TotalCaseCount({ country }) {
       type: "gradient",
       gradient: {
         shadeIntensity: 0.9,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
+        opacityFrom: dark ? 0.9 : 0.7,
+        opacityTo: dark ? 0.4 : 0.9,
         stops: [0, 100],
+        shade: dark ? "dark" : "light",
+
+        // shadeIntensity: 0.9,
+        // opacityFrom: 0.9,
+        // opacityTo: 0.4,
+        // stops: [0, 100],
+        // shade: "dark",
       },
     },
     xaxis: {
@@ -69,6 +76,16 @@ function TotalCaseCount({ country }) {
     tooltip: {
       enabled: false,
     },
+    // theme: {
+    //   mode: "light",
+    //   palette: "palette1",
+    //   monochrome: {
+    //     enabled: false,
+    //     color: "#255aee",
+    //     shadeTo: "light",
+    //     shadeIntensity: 0.65,
+    //   },
+    // },
     // colors: ["#355DFF"],
   };
 

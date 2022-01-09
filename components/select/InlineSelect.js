@@ -30,19 +30,21 @@ function InlineSelect({ query }) {
   }
   return (
     <div
-      className="inline-block cursor-pointer relative"
+      className="inline-block cursor-pointer relative z-50"
       onClick={() => setSelectOpen(!selectOpen)}
       ref={ref}
     >
       <span className="capitalize">{selected || "Worldwide"}</span>
       {selectOpen && (
-        <div className="absolute p-1 top-12 z-10 w-52 h-72 overflow-y-scroll text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+        <div className="absolute p-1 top-12 z-10 w-52 h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
           <ul className="py-1">
             <li>
               <Link href="/">
                 <a
-                  className={`block py-2 px-4 text-base hover:bg-gray-100 mx-1 rounded-lg ${
-                    !selected ? "text-blue-500" : "text-gray-700"
+                  className={`block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg ${
+                    !selected
+                      ? "text-blue-500"
+                      : "text-gray-700 dark:text-white"
                   }`}
                 >
                   Worldwide
@@ -54,11 +56,11 @@ function InlineSelect({ query }) {
                 <li key={country.country_name}>
                   <Link href={`/${country.country_name}`}>
                     <a
-                      className={`block py-2 px-4 text-base hover:bg-gray-100 mx-1 rounded-lg ${
+                      className={`block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg ${
                         selected?.toLowerCase() ===
                         country.country_name.toLowerCase()
                           ? "text-blue-500"
-                          : "text-gray-700"
+                          : "text-gray-700 dark:text-white"
                       }`}
                     >
                       {country.country_name}

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
 import moment from "moment";
+import * as echarts from "echarts";
 
 function TimeSeriesBarChart({
+  dark,
   query,
   color,
   timeDataName,
@@ -15,8 +17,8 @@ function TimeSeriesBarChart({
       chart.current?.getEchartsInstance().showLoading("default", {
         text: "Loading...",
         color: color,
-        textColor: "#000",
-        maskColor: "rgba(255, 255, 255, 0.8)",
+        textColor: dark ? "#fff" : "#000",
+        maskColor: dark ? "#242731" : "rgba(255, 255, 255, 0.8)",
         zlevel: 0,
         fontSize: 16,
         showSpinner: true,
@@ -29,6 +31,19 @@ function TimeSeriesBarChart({
     } else {
       chart.current?.getEchartsInstance().hideLoading();
     }
+  });
+
+  echarts.registerTheme("dark", {
+    textStyle: {
+      color: "#fff",
+    },
+    categoryAxis: {
+      axisLine: {
+        lineStyle: {
+          color: "#fff",
+        },
+      },
+    },
   });
 
   const data = {
@@ -98,6 +113,7 @@ function TimeSeriesBarChart({
         style={{
           height: "100%",
         }}
+        theme={dark ? "dark" : ""}
       />
     </div>
   );

@@ -8,7 +8,7 @@
 
 @layer components {
   .sidebar {
-    @apply hidden fixed top-0 left-0 bottom-0 z-10 sm:flex flex-col sm:w-[96px] lg:w-[255px] bg-white border-r-1 border-solid border-r-gray-200 px-5 pt-32 pb-16;
+    @apply hidden fixed top-0 left-0 bottom-0 z-10 sm:flex flex-col sm:w-[96px] lg:w-[255px] bg-white border-r-1 border-solid border-r-gray-200 dark:border-r-gray-700 px-5 pt-32 pb-16 dark:bg-dark-800;
   }
   .sidebar-head {
     @apply absolute top-0 left-0 right-0 flex justify-center items-center h-32 pt-3 flex-wrap;
@@ -30,11 +30,11 @@
   }
 
   .sidebar-item {
-    @apply flex items-center h-[56px] rounded-xl whitespace-nowrap font-semibold px-4 transition-all duration-200 text-gray-500  select-none hover:bg-gray-100 hover:bg-opacity-40 my-1;
+    @apply flex items-center h-[56px] rounded-xl whitespace-nowrap font-semibold px-4 transition-all duration-200 text-gray-500 dark:text-gray-300 select-none hover:bg-gray-100 hover:bg-opacity-40 my-1 dark:bg-dark-800 dark:hover:bg-dark-900 dark:hover:text-gray-200;
   }
 
   .sidebar-item.active {
-    @apply text-blue-600 bg-gray-200 bg-opacity-40;
+    @apply text-blue-600 bg-gray-200 bg-opacity-40 dark:bg-dark-900;
   }
 
   .sidebar-icon {
@@ -46,7 +46,7 @@
   }
 
   .main-content {
-    @apply flex flex-col min-h-screen pl-0 sm:pl-[96px] lg:pl-[255px] transition-[padding] duration-200;
+    @apply flex flex-col min-h-screen pl-0 sm:pl-[96px] lg:pl-[255px] transition-[padding] duration-200 dark:bg-dark-800;
   }
 
   .cards-list {
@@ -54,11 +54,11 @@
   }
 
   .card {
-    @apply relative flex-[0_0_100%] max-w-full rounded-3xl shadow-[0_8px_25px_rgba(0,0,0,7%)] mx-4 mt-8;
+    @apply relative flex-[0_0_100%] max-w-full rounded-3xl shadow-[0_8px_25px_rgba(0,0,0,7%)] mx-4 mt-8 dark:bg-dark-700;
   }
 
   .card-header {
-    @apply flex justify-between p-6 border-b-1 border-gray-200;
+    @apply flex justify-between p-6 border-b-1 border-gray-200 dark:border-gray-600;
   }
 
   .card-body {
@@ -70,21 +70,22 @@
   }
 
   .table_row {
-    @apply table-row rounded-2xl cursor-pointer text-slate-900 transition-all duration-100;
+    @apply table-row rounded-2xl cursor-pointer text-slate-900 dark:text-white transition-all duration-100;
   }
 
   .table_header {
-    @apply sticky top-0 bg-gray-100;
+    @apply sticky top-0 bg-gray-100 dark:bg-dark-900;
   }
 
   .table_row:not(.table_header):nth-child(2n + 1) {
-    background: rgba(228, 228, 228, 0.2);
+    @apply bg-gray-200 bg-opacity-20 dark:bg-opacity-[0.02];
   }
 
   .table_row:not(.table_header):hover {
     background: none;
     -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    @apply dark:bg-dark-700;
   }
 
   .table_cell {
@@ -92,7 +93,7 @@
   }
 
   .table_header .table_cell {
-    @apply h-10 text-[10px] font-semibold uppercase text-gray-500 tracking-wider;
+    @apply h-10 text-[10px] font-semibold uppercase text-gray-500 dark:text-gray-100 tracking-wider;
   }
 
   .table_row .table_cell:first-child {
@@ -118,4 +119,8 @@
   .table_row .table_cell-child {
     @apply rounded-tr-xl rounded-br-xl;
   } */
+
+  html {
+    @apply dark:bg-dark-800;
+  }
 }

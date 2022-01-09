@@ -8,9 +8,9 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 function MiniChartCard({ title, info, options, series, type }) {
   return (
     <div className="w-full xl:w-1/3">
-      <div className="rounded-3xl shadow-[0_8px_25px_rgba(0,0,0,7%)] mx-4 mt-8">
+      <div className="rounded-3xl shadow-[0_8px_25px_rgba(0,0,0,7%)] mx-4 mt-8 dark:bg-dark-700">
         <div className="relative h-48">
-          <div className="absolute top-0 right-0 left-0 bottom-0 -z-10 rounded-3xl overflow-hidden">
+          <div className="absolute top-0 right-0 left-0 bottom-0 z-10 rounded-3xl overflow-hidden">
             {options && series && type && (
               <Chart
                 options={options}
@@ -22,11 +22,11 @@ function MiniChartCard({ title, info, options, series, type }) {
             )}
           </div>
           <div className="p-4">
-            <p className="text-2xl font-poppins font-bold text-gray-700">
+            <p className="text-2xl font-poppins font-bold text-gray-700 dark:text-gray-100 z-20">
               {title || <Skeleton width="60%" />}
             </p>
             <div className="flex justify-end pt-20">
-              <p className="text-4xl font-poppins font-bold text-black">
+              <p className="text-4xl font-poppins font-bold text-black dark:text-white z-20">
                 {info || <Skeleton width="200px" />}
               </p>
             </div>
