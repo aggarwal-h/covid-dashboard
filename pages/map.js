@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 export default function Map() {
   return (
-    <div>
+    <div className="wrapper">
       <Head>
         <title>COVID-19 Dashboard</title>
       </Head>

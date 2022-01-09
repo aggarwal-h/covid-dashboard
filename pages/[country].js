@@ -6,7 +6,7 @@ import Main from "../components/main/Main";
 
 export default function CountryPage() {
   return (
-    <div>
+    <div className="wrapper">
       <Head>
         <title>COVID-19 Dashboard</title>
       </Head>

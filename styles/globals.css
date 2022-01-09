@@ -7,14 +7,27 @@
 @tailwind utilities;
 
 @layer components {
-  .sidebar {
-    @apply hidden fixed top-0 left-0 bottom-0 z-10 sm:flex flex-col sm:w-[96px] lg:w-[255px] bg-white border-r-1 border-solid border-r-gray-200 dark:border-r-gray-700 px-5 pt-32 pb-16 dark:bg-dark-800;
+  .wrapper {
+    @apply flex h-screen;
   }
+
+  .main-content {
+    @apply flex flex-col flex-auto overflow-auto min-h-screen pl-0 transition-[padding] duration-200 dark:bg-dark-800;
+  }
+
+  .sidebar {
+    @apply hidden relative flex-none top-0 left-0 bottom-0 z-10 sm:flex flex-col sm:w-[96px] lg:w-[255px] bg-white border-r-1 border-solid border-r-gray-200 dark:border-r-gray-700 px-5 pt-32 pb-16 dark:bg-dark-800 transition-all duration-200;
+  }
+
+  .sidebar.sidebar-minimized {
+    @apply lg:w-[96px];
+  }
+
   .sidebar-head {
     @apply absolute top-0 left-0 right-0 flex justify-center items-center h-32 pt-3 flex-wrap;
   }
   .sidebar-logo {
-    @apply inline-block lg:mr-7;
+    @apply inline-block;
     font-size: 0;
   }
 
@@ -43,10 +56,6 @@
 
   .sidebar-item .sidebar-text {
     @apply ml-4;
-  }
-
-  .main-content {
-    @apply flex flex-col min-h-screen pl-0 sm:pl-[96px] lg:pl-[255px] transition-[padding] duration-200 dark:bg-dark-800;
   }
 
   .cards-list {
