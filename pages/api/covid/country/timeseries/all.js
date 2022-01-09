@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../../../../prisma/db";
 
 export default async function (req, res) {
-  const prisma = new PrismaClient({ errorFormat: "pretty" });
   try {
     const cases = await prisma.covid_daily_timeseries_by_country.findMany();
     res.status(200).json(cases);

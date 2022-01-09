@@ -1,14 +1,18 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../../../../prisma/db";
 
 export default async function (req, res) {
-  const prisma = new PrismaClient({ errorFormat: "pretty" });
   try {
     const result = await prisma.$queryRaw`
-      SELECT date, SUM(new_cases) as new_cases 
-      FROM covid_daily_timeseries_by_country 
-      GROUP BY date 
-      ORDER BY date ASC`;
-
+      SELECT
+        date,
+        SUM(cumulative_cases) as cumulative_cases,
+        SUM(cumulative_deaths) as cumulative_deaths,
+        SUM(new_cases) as new_cases,
+        SUM(new_deaths) as new_deaths
+      FROM covid_timeseries
+      GROUP BY date
+      ORDER BY date ASC
+    `;
     res.status(200).json(result);
   } catch (e) {
     res.status(500).json({ error: "Unable to fetch all cases." });
