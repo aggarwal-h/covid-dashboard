@@ -57,7 +57,7 @@ function TotalCaseCount({ country }) {
     grid: {
       show: false,
       padding: {
-        top: 0,
+        top: 2,
         right: 0,
         bottom: 0,
         left: -10,
@@ -72,12 +72,6 @@ function TotalCaseCount({ country }) {
     // colors: ["#355DFF"],
   };
 
-  const series = [
-    {
-      name: "Series",
-    },
-  ];
-
   return (
     <div className="flex flex-row flex-wrap mb-16 p-2">
       <MiniChartCard
@@ -86,8 +80,11 @@ function TotalCaseCount({ country }) {
         options={options}
         series={[
           {
-            ...series[0],
-            data: queryData.data?.cases.map((c) => c.new_cases) || [],
+            name: "covid_total_cases",
+            data:
+              queryData.data?.cases.map((c) =>
+                c.total_cases < 0 ? 0 : c.total_cases
+              ) || [],
           },
         ]}
         type="area"
@@ -98,8 +95,11 @@ function TotalCaseCount({ country }) {
         options={{ ...options, colors: ["#FF7A68"] }}
         series={[
           {
-            ...series[0],
-            data: queryData.data?.cases.map((c) => c.new_deaths) || [],
+            name: "covid_total_deaths",
+            data:
+              queryData.data?.cases.map((c) =>
+                c.total_deaths < 0 ? 0 : c.total_deaths
+              ) || [],
           },
         ]}
         type="area"
@@ -113,7 +113,12 @@ function TotalCaseCount({ country }) {
         series={
           queryData.isLoading
             ? null
-            : [{ ...series[0], data: [40, 60, 170, 110, 140, 110, 200] }]
+            : [
+                {
+                  name: "covid_total_recovered",
+                  data: [40, 60, 170, 110, 140, 110, 200],
+                },
+              ]
         }
         type="area"
       />
