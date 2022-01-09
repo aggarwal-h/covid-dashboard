@@ -15,21 +15,8 @@ export function useData() {
   );
 }
 
-export function useDailyData() {
-  return useQuery(
-    "daily",
-    () => {
-      return axios
-        .get("http://localhost:3000/api/covid/worldwide/timeseries/all")
-        .then((res) => res.data);
-    },
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-}
-
-export function useDailyDataCountry(country) {
+export function useDailyData(country) {
+  country = country || "worldwide";
   return useQuery(
     `daily-${country}`,
     () => {
@@ -43,23 +30,8 @@ export function useDailyDataCountry(country) {
   );
 }
 
-export function usePreviousDays(days) {
-  return useQuery(
-    `${days}-previous-days`,
-    () => {
-      return axios
-        .get(
-          `http://localhost:3000/api/covid/worldwide/timeseries/previous?days=${days}`
-        )
-        .then((res) => res.data);
-    },
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-}
-
-export function usePreviousDaysCountry(days, country) {
+export function usePreviousDays(days, country) {
+  country = country || "worldwide";
   return useQuery(
     `${days}-previous-days-${country?.toLowerCase()}`,
     () => {
