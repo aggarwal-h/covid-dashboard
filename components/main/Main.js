@@ -7,14 +7,13 @@ import { useAllCountriesInfo, useDailyData } from "../../queries/queries";
 import InlineSelect from "../select/InlineSelect";
 import { useRouter } from "next/router";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { useLocalStorage } from "../../utils";
 
 function Main() {
   const router = useRouter();
   const country = router.query.country;
   const dailyData = useDailyData(country);
   const countriesQuery = useAllCountriesInfo();
-  const [dark, setDark] = useLocalStorage("dark", false);
+  const [dark, setDark] = useState("dark", false);
 
   useEffect(() => {
     if (
@@ -28,7 +27,12 @@ function Main() {
       .addEventListener("change", (event) => {
         event.matches ? setDark(true) : setDark(false);
       });
-  });
+    return () => {
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", () => {});
+    };
+  }, []);
 
   return (
     <div>
