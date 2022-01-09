@@ -8,13 +8,13 @@
 
 @layer components {
   .sidebar {
-    @apply fixed top-0 left-0 bottom-0 z-10 flex flex-col w-[255px] bg-white border-r-1 border-solid border-r-gray-200 px-5 pt-32 pb-16;
+    @apply hidden fixed top-0 left-0 bottom-0 z-10 sm:flex flex-col sm:w-[96px] lg:w-[255px] bg-white border-r-1 border-solid border-r-gray-200 px-5 pt-32 pb-16;
   }
   .sidebar-head {
     @apply absolute top-0 left-0 right-0 flex justify-center items-center h-32 pt-3 flex-wrap;
   }
   .sidebar-logo {
-    @apply inline-block mr-7;
+    @apply inline-block lg:mr-7;
     font-size: 0;
   }
 
@@ -30,7 +30,7 @@
   }
 
   .sidebar-item {
-    @apply flex items-center h-[56px] rounded-xl whitespace-nowrap font-semibold px-5 transition-all duration-200 text-gray-500  select-none hover:bg-gray-100 hover:bg-opacity-40 my-1;
+    @apply flex items-center h-[56px] rounded-xl whitespace-nowrap font-semibold px-4 transition-all duration-200 text-gray-500  select-none hover:bg-gray-100 hover:bg-opacity-40 my-1;
   }
 
   .sidebar-item.active {
@@ -46,7 +46,7 @@
   }
 
   .main-content {
-    @apply flex flex-col min-h-screen pl-[255px] transition-[padding] duration-200;
+    @apply flex flex-col min-h-screen pl-0 sm:pl-[96px] lg:pl-[255px] transition-[padding] duration-200;
   }
 
   .cards-list {
@@ -64,4 +64,58 @@
   .card-body {
     @apply p-6;
   }
+
+  .table_container {
+    @apply table w-full rounded-xl;
+  }
+
+  .table_row {
+    @apply table-row rounded-2xl cursor-pointer text-slate-900 transition-all duration-100;
+  }
+
+  .table_header {
+    @apply sticky top-0 bg-gray-100;
+  }
+
+  .table_row:not(.table_header):nth-child(2n + 1) {
+    background: rgba(228, 228, 228, 0.2);
+  }
+
+  .table_row:not(.table_header):hover {
+    background: none;
+    -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  }
+
+  .table_cell {
+    @apply table-cell align-middle h-16 pl-4 font-semibold max-w-[4rem];
+  }
+
+  .table_header .table_cell {
+    @apply h-10 text-[10px] font-semibold uppercase text-gray-500 tracking-wider;
+  }
+
+  .table_row .table_cell:first-child {
+    @apply max-w-[5px];
+  }
+
+  .table_row .table_cell:nth-of-type(2) {
+    @apply max-w-[5px];
+  }
+
+  .table_header .table_cell:first-child {
+    @apply rounded-tl-lg;
+  }
+
+  .table_header .table_cell:last-child {
+    @apply rounded-tr-lg;
+  }
+
+  /* .table_row .table_cell:first-child {
+    @apply rounded-tl-xl rounded-bl-xl;
+  }
+
+  .table_row .table_cell-child {
+    @apply rounded-tr-xl rounded-br-xl;
+  } */
 }
