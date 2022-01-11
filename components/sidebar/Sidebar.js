@@ -8,6 +8,7 @@ import {
 import SidebarItem from "./SidebarItem";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../utils";
+import Link from "next/link";
 
 function Sidebar() {
   const router = useRouter();
@@ -16,28 +17,30 @@ function Sidebar() {
     <div className={`sidebar ${minimized ? "sidebar-minimized" : ""}`}>
       {/* Head */}
       <div className="sidebar-head">
-        <a className="sidebar-logo">
-          <span className="hidden lg:block" id="covid-large-img">
-            <Image
-              className="sidebar-pic sidebar-pic-light"
-              src="/assets/img/covid_large.png"
-              width="180%"
-              height="100%"
-              objectFit="contain"
-              alt="COVID-dashboard-picture-large"
-            />
-          </span>
-          <span className="block lg:hidden" id="covid-small-img">
-            <Image
-              className="sidebar-pic sidebar-pic-light"
-              src="/assets/img/covid.svg"
-              width="150%"
-              height="80%"
-              objectFit="contain"
-              alt="COVID-dashboard-picture-svg"
-            />
-          </span>
-        </a>
+        <Link href="/">
+          <a className="sidebar-logo">
+            <span className="hidden lg:block" id="covid-large-img">
+              <Image
+                className="sidebar-pic sidebar-pic-light"
+                src="/assets/img/covid_large.png"
+                width="180%"
+                height="100%"
+                objectFit="contain"
+                alt="COVID-dashboard-picture-large"
+              />
+            </span>
+            <span className="block lg:hidden" id="covid-small-img">
+              <Image
+                className="sidebar-pic sidebar-pic-light"
+                src="/assets/img/covid.svg"
+                width="150%"
+                height="80%"
+                objectFit="contain"
+                alt="COVID-dashboard-picture-svg"
+              />
+            </span>
+          </a>
+        </Link>
       </div>
 
       {/* Body */}
