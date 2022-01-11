@@ -17,17 +17,17 @@ function Sidebar() {
       {/* Head */}
       <div className="sidebar-head">
         <a className="sidebar-logo">
-          <span className={`hidden ${minimized ? "" : "lg:block"}`}>
+          <span className="hidden lg:block" id="covid-large-img">
             <Image
               className="sidebar-pic sidebar-pic-light"
               src="/assets/img/covid_large.png"
-              width="150%"
+              width="180%"
               height="100%"
               objectFit="contain"
               alt="COVID-dashboard-picture-large"
             />
           </span>
-          <span className={`block ${minimized ? "" : "lg:hidden"}`}>
+          <span className="block lg:hidden" id="covid-small-img">
             <Image
               className="sidebar-pic sidebar-pic-light"
               src="/assets/img/covid.svg"

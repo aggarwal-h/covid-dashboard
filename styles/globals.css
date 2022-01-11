@@ -31,6 +31,14 @@
     font-size: 0;
   }
 
+  .sidebar-minimized #covid-large-img {
+    @apply hidden;
+  }
+
+  .sidebar-minimized #covid-small-img {
+    @apply block;
+  }
+
   .sidebar-body {
     -ms-overflow-style: none;
     scrollbar-width: none;
