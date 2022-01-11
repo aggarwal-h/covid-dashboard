@@ -44,7 +44,7 @@ function AllDataTable() {
   };
   return (
     <div className="mt-8 m-4">
-      <div className="rounded-xl shadow-[0_8px_25px_rgba(0,0,0,7%)] overflow-y-scroll max-h-[90vh]">
+      <div className="rounded-xl shadow-[0_8px_25px_rgba(0,0,0,7%)] overflow-scroll max-h-[90vh]">
         <div className="table_container">
           {query.data?.length !== 0 && (
             <div className="table_header table_row">
@@ -82,15 +82,16 @@ function AllDataTable() {
                     <div className="table_cell">
                       <span className="ml-2">{i}</span>
                     </div>
-                    <div className="table_cell">
+                    <div className="table_cell min-w-[48px]">
                       {Flag && (
-                        <Flag title={country.country} className="ml-2 w-6" />
+                        <Flag title={country.country} className="ml-3 w-6" />
                       )}
                       {!Flag && (
-                        <span className="ml-2">
+                        <span className="ml-3">
                           <Image
                             width="24px"
                             height="24px"
+                            layout="fixed"
                             src="/assets/img/earth.svg"
                             alt="earth"
                           />
