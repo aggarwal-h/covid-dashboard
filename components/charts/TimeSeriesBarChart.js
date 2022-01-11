@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import moment from "moment";
 import * as echarts from "echarts";
+import * as numeral from "numeral";
 
 function TimeSeriesBarChart({
   dark,
@@ -12,6 +13,21 @@ function TimeSeriesBarChart({
   dateFormat,
 }) {
   const chart = useRef(null);
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    adjustWidth();
+    window.addEventListener("resize", adjustWidth);
+
+    return () => {
+      window.removeEventListener("resize", adjustWidth);
+    };
+  }, []);
+
+  const adjustWidth = () => {
+    const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+    setMobile(width < 500);
+  };
+
   useEffect(() => {
     if (query.isLoading) {
       chart.current?.getEchartsInstance().showLoading("default", {
@@ -71,7 +87,7 @@ function TimeSeriesBarChart({
       bottom: 30,
       right: 10,
       top: 10,
-      left: 80,
+      left: mobile ? 40 : 60,
     },
     dataZoom: [
       {
@@ -94,6 +110,11 @@ function TimeSeriesBarChart({
       },
       splitLine: {
         show: false,
+      },
+      axisLabel: {
+        formatter: function (value) {
+          return mobile ? numeral(value).format("0.[0]a") : value;
+        },
       },
     },
     color: [color],
