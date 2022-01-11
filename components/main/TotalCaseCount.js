@@ -28,12 +28,6 @@ function TotalCaseCount({ dark, country }) {
         opacityTo: dark ? 0.4 : 0.9,
         stops: [0, 100],
         shade: dark ? "dark" : "light",
-
-        // shadeIntensity: 0.9,
-        // opacityFrom: 0.9,
-        // opacityTo: 0.4,
-        // stops: [0, 100],
-        // shade: "dark",
       },
     },
     xaxis: {
@@ -76,23 +70,12 @@ function TotalCaseCount({ dark, country }) {
     tooltip: {
       enabled: false,
     },
-    // theme: {
-    //   mode: "light",
-    //   palette: "palette1",
-    //   monochrome: {
-    //     enabled: false,
-    //     color: "#255aee",
-    //     shadeTo: "light",
-    //     shadeIntensity: 0.65,
-    //   },
-    // },
-    // colors: ["#355DFF"],
   };
 
   return (
     <div className="flex flex-row flex-wrap mb-16 p-2">
       <MiniChartCard
-        title="Coronavirus cases"
+        title="Cases"
         info={numberWithCommas(queryData.data?.total_cases)}
         options={options}
         series={[
