@@ -74,3 +74,17 @@ export function useAllCountriesInfo() {
     }
   );
 }
+
+export function useCountryExists(country) {
+  return useQuery(
+    `${country}-exists`,
+    () => {
+      return axios
+        .get(`http://localhost:3000/api/country-info/exists/${country}`)
+        .then((res) => res.data);
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+}
