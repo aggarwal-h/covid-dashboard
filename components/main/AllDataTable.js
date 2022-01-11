@@ -5,6 +5,7 @@ import { useCountriesToday } from "../../queries/queries";
 import { numberWithCommas } from "../../utils";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
+import Image from "next/image";
 
 function AllDataTable() {
   const query = useCountriesToday();
@@ -71,14 +72,29 @@ function AllDataTable() {
                 Flag = Flags[country.country_code];
               }
               return (
-                <Link key={i} href={`/${country.country}`}>
+                <Link
+                  key={i}
+                  href={
+                    country.country === "World" ? "/" : `/${country.country}`
+                  }
+                >
                   <a className="table_row">
                     <div className="table_cell">
-                      <span className="ml-2">{i + 1}</span>
+                      <span className="ml-2">{i}</span>
                     </div>
                     <div className="table_cell">
                       {Flag && (
                         <Flag title={country.country} className="ml-2 w-6" />
+                      )}
+                      {!Flag && (
+                        <span className="ml-2">
+                          <Image
+                            width="24px"
+                            height="24px"
+                            src="/assets/img/earth.svg"
+                            alt="earth"
+                          />
+                        </span>
                       )}
                     </div>
                     <div className="table_cell">{country.country}</div>
