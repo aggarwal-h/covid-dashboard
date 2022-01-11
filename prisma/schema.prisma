@@ -7,24 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cases_and_countries {
-  country_name         String   @db.VarChar(80)
-  province_state_name  String   @default("") @db.VarChar(80)
-  date                 DateTime @db.Date
-  cumulative_cases     Int?
-  cumulative_deaths    Int?
-  new_cases            Int?
-  new_deaths           Int?
-  county_name          String   @default("") @db.VarChar(80)
-  continent_name       String?  @db.VarChar(80)
-  data_source_name     String?  @db.VarChar(80)
-  county_fips_number   String?  @db.VarChar(10)
-  country_alpha_3_code String?  @db.Char(3)
-  country_alpha_2_code String?  @db.Char(2)
-
-  @@id([country_name, province_state_name, county_name, date])
-}
-
 model countries {
   country_name         String             @db.VarChar(80)
   province_state_name  String             @db.VarChar(80)
