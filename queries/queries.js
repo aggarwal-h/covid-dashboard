@@ -16,7 +16,6 @@ export function useData() {
 }
 
 export function useDailyData(country) {
-  country = country || "worldwide";
   return useQuery(
     `daily-${country}`,
     () => {
@@ -31,7 +30,6 @@ export function useDailyData(country) {
 }
 
 export function usePreviousDays(days, country) {
-  country = country || "worldwide";
   return useQuery(
     `${days}-previous-days-${country?.toLowerCase()}`,
     () => {

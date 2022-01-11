@@ -10,7 +10,7 @@ import { SkeletonTheme } from "react-loading-skeleton";
 
 function Main() {
   const router = useRouter();
-  const country = router.query.country;
+  const country = router.pathname === "/" ? "worldwide" : router.query.country;
   const dailyData = useDailyData(country);
   const countriesQuery = useAllCountriesInfo();
   const [dark, setDark] = useState(false);
@@ -45,7 +45,7 @@ function Main() {
         </h1>
         <DailyNewCases query={dailyData} dark={dark} />
         <DailyNewDeaths query={dailyData} dark={dark} />
-        {!country && (
+        {router.pathname === "/" && (
           <React.Fragment>
             <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
               Reported Cases Table
