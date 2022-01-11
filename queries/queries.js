@@ -21,7 +21,7 @@ export function useDailyData(country) {
     `daily-${country}`,
     () => {
       return axios
-        .get(`http://localhost:3000/api/covid/${country}/timeseries/all`)
+        .get(`covid/${country}/timeseries/all`)
         .then((res) => res.data);
     },
     {
@@ -36,9 +36,7 @@ export function usePreviousDays(days, country) {
     `${days}-previous-days-${country?.toLowerCase()}`,
     () => {
       return axios
-        .get(
-          `http://localhost:3000/api/covid/${country}/timeseries/previous?days=${days}`
-        )
+        .get(`covid/${country}/timeseries/previous?days=${days}`)
         .then((res) => res.data);
     },
     {
@@ -52,7 +50,7 @@ export function useCountriesToday() {
     `countries-today`,
     () => {
       return axios
-        .get(`http://localhost:3000/api/covid/country/timeseries/today`)
+        .get(`covid/country/timeseries/today`)
         .then((res) => res.data);
     },
     {
@@ -65,9 +63,7 @@ export function useAllCountriesInfo() {
   return useQuery(
     `all-countries-info`,
     () => {
-      return axios
-        .get(`http://localhost:3000/api/country-info/all`)
-        .then((res) => res.data);
+      return axios.get(`country-info/all`).then((res) => res.data);
     },
     {
       refetchOnWindowFocus: false,
@@ -80,7 +76,7 @@ export function useCountryExists(country) {
     `${country}-exists`,
     () => {
       return axios
-        .get(`http://localhost:3000/api/country-info/exists/${country}`)
+        .get(`country-info/exists/${country}`)
         .then((res) => res.data);
     },
     {
