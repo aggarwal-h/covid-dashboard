@@ -79,7 +79,7 @@
   }
 
   .card-body {
-    @apply p-6;
+    @apply px-2 sm:px-4 md:px-6 p-6;
   }
 
   .table_container {
