@@ -48,13 +48,13 @@ function Sidebar() {
         <nav className="sidebar-nav">
           <SidebarItem
             title="Home"
-            icon={<HomeIcon />}
+            icon={<HomeIcon className="w-6 h-6" />}
             to="/"
             active={router.pathname === "/"}
           />
           <SidebarItem
             title="Map"
-            icon={<MapIcon />}
+            icon={<MapIcon className="w-6 h-6" />}
             to="/map"
             active={router.pathname === "/map"}
           />

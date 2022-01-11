@@ -59,7 +59,7 @@
   }
 
   .sidebar-icon {
-    @apply relative flex justify-center items-center flex-shrink-0 w-6 h-6 text-[0];
+    @apply relative flex justify-center items-center flex-shrink-0 text-[0];
   }
 
   .sidebar-item .sidebar-text {
