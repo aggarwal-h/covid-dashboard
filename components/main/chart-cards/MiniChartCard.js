@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import SimpleSkeleton from "../../skeletons/SimpleSkeleton";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -23,11 +23,11 @@ function MiniChartCard({ title, info, options, series, type }) {
           </div>
           <div className="p-4">
             <p className="text-2xl font-poppins font-bold text-gray-700 dark:text-gray-100 z-20">
-              {title || <Skeleton width="60%" />}
+              {title || <SimpleSkeleton className="h-9 w-[60%]" />}
             </p>
             <div className="flex justify-end pt-20">
               <p className="text-4xl font-poppins font-bold text-black dark:text-white z-20">
-                {info || <Skeleton width="200px" />}
+                {info || <SimpleSkeleton className="h-9 w-[200px]" />}
               </p>
             </div>
           </div>

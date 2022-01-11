@@ -3,9 +3,9 @@ import Flags from "country-flag-icons/react/3x2";
 import { countries } from "country-flag-icons";
 import { useCountriesToday } from "../../queries/queries";
 import { numberWithCommas } from "../../utils";
-import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import Image from "next/image";
+import SimpleSkeleton from "../skeletons/SimpleSkeleton";
 
 function AllDataTable() {
   const query = useCountriesToday();
@@ -16,26 +16,26 @@ function AllDataTable() {
         <div className="table_row" key={i}>
           <div className="table_cell">
             <span className="ml-2">
-              <Skeleton width={20} />
+              <SimpleSkeleton className="w-5 h-5 dark:bg-[#1f2128]" />
             </span>
           </div>
           <div className="table_cell">
-            <Skeleton width={20} />
+            <SimpleSkeleton className="w-5 h-5 dark:bg-[#1f2128]" />
           </div>
           <div className="table_cell">
-            <Skeleton width={80} />
+            <SimpleSkeleton className="w-20 h-5 dark:bg-[#1f2128]" />
           </div>
           <div className="table_cell">
-            <Skeleton width={80} />
+            <SimpleSkeleton className="w-20 h-5 dark:bg-[#1f2128]" />
           </div>
           <div className="table_cell text-blue-500">
-            <Skeleton width={80} />
+            <SimpleSkeleton className="w-20 h-5 dark:bg-[#1f2128]" />
           </div>
           <div className="table_cell">
-            <Skeleton width={80} />
+            <SimpleSkeleton className="w-20 h-5 dark:bg-[#1f2128]" />
           </div>
           <div className="table_cell text-red-500">
-            <Skeleton width={80} />
+            <SimpleSkeleton className="w-20 h-5 dark:bg-[#1f2128]" />
           </div>
         </div>
       );

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import Skeleton from "react-loading-skeleton";
+import SimpleSkeleton from "../skeletons/SimpleSkeleton";
 
 function InlineSelect({ query }) {
   const [selectOpen, setSelectOpen] = useState(false);
@@ -24,7 +24,7 @@ function InlineSelect({ query }) {
   if (query.isLoading) {
     return (
       <span className="inline-block">
-        <Skeleton width={200} />
+        <SimpleSkeleton className="h-7 w-56" />
       </span>
     );
   }
@@ -39,7 +39,7 @@ function InlineSelect({ query }) {
           router.pathname === "/" ? (
             "Worldwide"
           ) : (
-            <Skeleton width={200} />
+            <SimpleSkeleton className="h-7 w-56" />
           )
         ) : (
           selected

@@ -6,7 +6,6 @@ import TotalCaseCount from "./TotalCaseCount";
 import { useAllCountriesInfo, useDailyData } from "../../queries/queries";
 import InlineSelect from "../select/InlineSelect";
 import { useRouter } from "next/router";
-import { SkeletonTheme } from "react-loading-skeleton";
 
 function Main() {
   const router = useRouter();
@@ -32,28 +31,23 @@ function Main() {
 
   return (
     <div>
-      <SkeletonTheme
-        baseColor={dark ? "#1f2128" : ""}
-        highlightColor={dark ? "#242731" : ""}
-      >
-        <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-          <InlineSelect query={countriesQuery} /> Cases
-        </h1>
-        <TotalCaseCount country={country} dark={dark} />
-        <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-          Timeseries Charts
-        </h1>
-        <DailyNewCases query={dailyData} dark={dark} />
-        <DailyNewDeaths query={dailyData} dark={dark} />
-        {router.pathname === "/" && (
-          <React.Fragment>
-            <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-              Reported Cases Table
-            </h1>
-            <AllDataTable />
-          </React.Fragment>
-        )}
-      </SkeletonTheme>
+      <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
+        <InlineSelect query={countriesQuery} /> Cases
+      </h1>
+      <TotalCaseCount country={country} dark={dark} />
+      <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
+        Timeseries Charts
+      </h1>
+      <DailyNewCases query={dailyData} dark={dark} />
+      <DailyNewDeaths query={dailyData} dark={dark} />
+      {router.pathname === "/" && (
+        <React.Fragment>
+          <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
+            Reported Cases Table
+          </h1>
+          <AllDataTable />
+        </React.Fragment>
+      )}
     </div>
   );
 }
