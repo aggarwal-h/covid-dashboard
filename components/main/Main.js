@@ -13,26 +13,22 @@ function Main() {
   const country = router.query.country;
   const dailyData = useDailyData(country);
   const countriesQuery = useAllCountriesInfo();
-  const [dark, setDark] = useState("dark", false);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
+    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mediaQueryList.matches) {
       setDark(true);
     }
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (event) => {
-        event.matches ? setDark(true) : setDark(false);
-      });
+    mediaQueryList.addEventListener("change", setDarkOnEvent);
     return () => {
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .removeEventListener("change", () => {});
+      mediaQueryList.removeEventListener("change", setDarkOnEvent);
     };
   }, []);
+
+  const setDarkOnEvent = (event) => {
+    setDark(event.matches);
+  };
 
   return (
     <div>
