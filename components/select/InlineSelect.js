@@ -34,7 +34,17 @@ function InlineSelect({ query }) {
       onClick={() => setSelectOpen(!selectOpen)}
       ref={ref}
     >
-      <span className="capitalize">{selected || "Worldwide"}</span>
+      <span className="capitalize">
+        {selected === undefined ? (
+          router.pathname === "/" ? (
+            "Worldwide"
+          ) : (
+            <Skeleton width={200} />
+          )
+        ) : (
+          selected
+        )}
+      </span>
       {selectOpen && (
         <div className="absolute p-1 top-12 z-10 w-52 h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
           <ul className="py-1">
