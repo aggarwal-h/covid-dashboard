@@ -54,16 +54,18 @@ function InlineSelect({ query, country }) {
         />
       </span>
       {selectOpen && (
-        <div className="absolute p-1 mt-3 z-10 min-w-52 w-[85%] h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
+        <div className="absolute p-1 mt-3 z-10 min-w-[13rem] w-[85%] h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
           <ul className="py-1">
             <li>
               <Link href="/">
                 <a
-                  className={`block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg ${
-                    !selected
-                      ? "text-blue-500"
-                      : "text-gray-700 dark:text-white"
-                  }`}
+                  className={classnames(
+                    "block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg",
+                    {
+                      "text-blue-500": selected === "worldwide",
+                      "text-gray-700 dark:text-white": selected !== "worldwide",
+                    }
+                  )}
                 >
                   Worldwide
                 </a>
@@ -74,11 +76,15 @@ function InlineSelect({ query, country }) {
                 <li key={country}>
                   <Link href={`/${country}`}>
                     <a
-                      className={`block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg ${
-                        selected?.toLowerCase() === country.toLowerCase()
-                          ? "text-blue-500"
-                          : "text-gray-700 dark:text-white"
-                      }`}
+                      className={classnames(
+                        "block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg",
+                        {
+                          "text-blue-500":
+                            selected?.toLowerCase() === country.toLowerCase(),
+                          "text-gray-700 dark:text-white":
+                            selected?.toLowerCase() !== country.toLowerCase(),
+                        }
+                      )}
                     >
                       {country}
                     </a>
