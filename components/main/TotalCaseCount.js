@@ -77,6 +77,13 @@ function TotalCaseCount({ dark, country }) {
       <MiniChartCard
         title="Cases"
         info={numberWithCommas(queryData.data?.total_cases)}
+        detail={
+          queryData.isLoading
+            ? null
+            : (queryData.data?.new_deaths >= 0 ? "+" : "") +
+              numberWithCommas(queryData.data?.new_cases)
+        }
+        detailColor="text-blue-500"
         options={options}
         series={[
           {
@@ -92,6 +99,13 @@ function TotalCaseCount({ dark, country }) {
       <MiniChartCard
         title="Deaths"
         info={numberWithCommas(queryData.data?.total_deaths)}
+        detail={
+          queryData.isLoading
+            ? null
+            : (queryData.data?.new_deaths >= 0 ? "+" : "") +
+              numberWithCommas(queryData.data?.new_deaths)
+        }
+        detailColor="text-red-500"
         options={{ ...options, colors: ["#FF7A68"] }}
         series={[
           {
@@ -107,6 +121,8 @@ function TotalCaseCount({ dark, country }) {
       <MiniChartCard
         title="Recovered"
         info={queryData.isLoading ? null : numberWithCommas(0)}
+        detail={"+" + numberWithCommas(0)}
+        detailColor="text-green-500"
         options={
           queryData.isLoading ? null : { ...options, colors: ["#3DBAA2"] }
         }
@@ -116,7 +132,7 @@ function TotalCaseCount({ dark, country }) {
             : [
                 {
                   name: "covid_total_recovered",
-                  data: [40, 60, 170, 110, 140, 110, 200],
+                  data: [0, 0, 0, 0, 0, 0, 0],
                 },
               ]
         }

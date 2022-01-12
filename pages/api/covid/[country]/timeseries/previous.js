@@ -7,7 +7,11 @@ export default async function (req, res) {
     days = days + " days";
 
     const total = await prisma.$queryRaw`
-      SELECT cumulative_cases as total_cases, cumulative_deaths as total_deaths
+      SELECT 
+        cumulative_cases as total_cases, 
+        cumulative_deaths as total_deaths,
+        new_cases,
+        new_deaths
       FROM covid_country_aggregated_view
       WHERE 
         date = (SELECT MAX(date) FROM covid_country_aggregated_view) 

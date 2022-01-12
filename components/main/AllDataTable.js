@@ -106,13 +106,15 @@ function AllDataTable() {
                       {numberWithCommas(country.cumulative_cases)}
                     </div>
                     <div className="table_cell text-blue-500">
-                      +{numberWithCommas(country.new_cases)}
+                      {country.new_cases > 0 ? "+" : ""}
+                      {numberWithCommas(country.new_cases)}
                     </div>
                     <div className="table_cell">
                       {numberWithCommas(country.cumulative_deaths)}
                     </div>
                     <div className="table_cell text-red-500">
-                      +{numberWithCommas(country.new_deaths)}
+                      {country.new_deaths > 0 ? "+" : ""}
+                      {numberWithCommas(country.new_deaths)}
                     </div>
                   </a>
                 </Link>

@@ -1,10 +1,19 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import SimpleSkeleton from "../../skeletons/SimpleSkeleton";
+import classnames from "classnames";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-function MiniChartCard({ title, info, options, series, type }) {
+function MiniChartCard({
+  title,
+  info,
+  detail,
+  detailColor,
+  options,
+  series,
+  type,
+}) {
   return (
     <div className="w-full xl:w-1/3">
       <div className="rounded-3xl shadow-[0_8px_25px_rgba(0,0,0,7%)] mx-4 mt-8 dark:bg-dark-700">
@@ -27,6 +36,16 @@ function MiniChartCard({ title, info, options, series, type }) {
             <div className="flex justify-end pt-20">
               <p className="text-4xl font-poppins font-bold text-black dark:text-white">
                 {info || <SimpleSkeleton className="h-9 w-[200px]" />}
+              </p>
+            </div>
+            <div className="flex justify-end -mt-1">
+              <p
+                className={classnames(
+                  "text-lg font-poppins font-bold",
+                  detailColor
+                )}
+              >
+                {detail || <SimpleSkeleton className="h-4 w-20" />}
               </p>
             </div>
           </div>
