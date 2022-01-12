@@ -4,8 +4,17 @@ import Content from "../components/content/Content";
 import Sidebar from "../components/sidebar/Sidebar";
 import Main from "../components/main/Main";
 import { parseCookies } from "../utils";
+import axios from "axios";
+import ErrorPage from "next/error";
 
-export default function CountryPage({ initialSidebarMinimized, country }) {
+export default function CountryPage({
+  initialSidebarMinimized,
+  country,
+  errorStatus,
+}) {
+  if (errorStatus) {
+    return <ErrorPage statusCode={errorStatus} />;
+  }
   return (
     <div className="wrapper">
       <Head>
@@ -19,7 +28,16 @@ export default function CountryPage({ initialSidebarMinimized, country }) {
   );
 }
 
-CountryPage.getInitialProps = ({ req, query }) => {
+CountryPage.getInitialProps = async ({ req, query, res }) => {
+  const countryExists = await axios
+    .get(`country-info/exists/${query.country}`)
+    .then((res) => res.data);
+  if (!countryExists) {
+    if (res) {
+      res.statusCode = 404;
+    }
+    return { errorStatus: 404 };
+  }
   const cookies = parseCookies(req);
   return {
     initialSidebarMinimized: cookies.sidebarMinimized,
