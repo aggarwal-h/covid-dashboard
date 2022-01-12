@@ -7,21 +7,19 @@ export default async function (req, res) {
     days = days + " days";
 
     const total = await prisma.$queryRaw`
-      SELECT SUM(cumulative_cases) as total_cases, SUM(cumulative_deaths) as total_deaths
-      FROM covid_timeseries
+      SELECT cumulative_cases as total_cases, cumulative_deaths as total_deaths
+      FROM covid_country_aggregated_view
       WHERE 
-        date = (SELECT MAX(date) FROM covid_timeseries) 
-        AND LOWER(country_name) = LOWER(${country})
-      GROUP BY date
+        date = (SELECT MAX(date) FROM covid_country_aggregated_view) 
+        AND LOWER(country) = LOWER(${country})
     `;
 
     const cases = await prisma.$queryRaw`
-      SELECT date, SUM(new_cases) as total_cases, SUM(new_deaths) as total_deaths 
-      FROM covid_timeseries
+      SELECT date, new_cases as total_cases, new_deaths as total_deaths 
+      FROM covid_country_aggregated_view
       WHERE 
         date > CURRENT_DATE - ${days}::TEXT::INTERVAL 
-        AND LOWER(country_name) = LOWER(${country})
-      GROUP BY date
+        AND LOWER(country) = LOWER(${country})
       ORDER BY date ASC
     `;
 
