@@ -74,6 +74,7 @@ function Sidebar({ initialSidebarMinimized }) {
         <button
           className="mb-4 p-3 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg lg:mb-0 hidden lg:block"
           onClick={() => setMinimized(!minimized)}
+          aria-label="Minimize Sidebar"
         >
           <ChevronDoubleLeftIcon
             className={classnames(

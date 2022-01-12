@@ -3,7 +3,7 @@ import Head from "next/head";
 import Content from "../components/content/Content";
 import Sidebar from "../components/sidebar/Sidebar";
 import Main from "../components/main/Main";
-import { parseCookies } from "../utils";
+import { parseCookies, capitalize } from "../utils";
 import axios from "axios";
 import ErrorPage from "next/error";
 
@@ -15,10 +15,18 @@ export default function CountryPage({
   if (errorStatus) {
     return <ErrorPage statusCode={errorStatus} />;
   }
+  const title = `COVID-19: ${capitalize(country)} Cases`;
+  const description = `Visualize cases, deaths and recoveries from COVID-19 in ${capitalize(
+    country
+  )}`;
   return (
     <div className="wrapper">
       <Head>
-        <title>COVID-19 Dashboard</title>
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
       </Head>
       <Sidebar initialSidebarMinimized={initialSidebarMinimized} />
       <Content>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import cookie from "cookie"
+import cookie from "cookie";
 
 export function numberWithCommas(x) {
   return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -27,5 +27,9 @@ export function useLocalStorage(key, initialValue) {
 }
 
 export function parseCookies(req) {
-  return cookie.parse(req ? req.headers.cookie || "" : document.cookie)
+  return cookie.parse(req ? req.headers.cookie || "" : document.cookie);
+}
+
+export function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
