@@ -1,7 +1,9 @@
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import SimpleSkeleton from "../skeletons/SimpleSkeleton";
+import classnames from "classnames";
 
 function InlineSelect({ query, country }) {
   const [selectOpen, setSelectOpen] = useState(false);
@@ -23,23 +25,36 @@ function InlineSelect({ query, country }) {
 
   return (
     <div
-      className="inline-block cursor-pointer relative z-50"
+      className={classnames(
+        "inline-block cursor-pointer relative z-50 py-2 px-4 bg-gray-100 dark:bg-dark-900 rounded-3xl active:scale-[100%] scale-[101%] transition-transform duration-100",
+        {
+          "scale-[101%]": selectOpen,
+        }
+      )}
       onClick={() => setSelectOpen(!selectOpen)}
       ref={ref}
     >
       <span className="capitalize">
         {selected === undefined ? (
           router.pathname === "/" ? (
-            "Worldwide"
+            Worldwide
           ) : (
             <SimpleSkeleton className="h-7 w-56" />
           )
         ) : (
           selected
         )}
+        <ChevronDownIcon
+          className={classnames(
+            "ml-2 w-6 h-6 inline-block transition-transform duration-100",
+            {
+              "rotate-180": selectOpen,
+            }
+          )}
+        />
       </span>
       {selectOpen && (
-        <div className="absolute p-1 top-12 z-10 w-52 h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
+        <div className="absolute p-1 mt-3 z-10 min-w-52 w-[85%] h-72 overflow-y-scroll text-base list-none bg-white dark:bg-dark-900 rounded-2xl divide-y divide-gray-100 shadow">
           <ul className="py-1">
             <li>
               <Link href="/">
