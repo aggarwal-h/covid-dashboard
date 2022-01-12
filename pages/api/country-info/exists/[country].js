@@ -7,7 +7,7 @@ export default async function (req, res) {
     SELECT EXISTS 
       (SELECT country_name 
         FROM countries 
-        WHERE country_name = ${country}
+        WHERE LOWER(country_name) = LOWER(${country})
       )`;
     res.status(200).json(result[0].exists);
   } catch (e) {
