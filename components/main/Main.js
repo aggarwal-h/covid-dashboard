@@ -6,6 +6,7 @@ import TotalCaseCount from "./TotalCaseCount";
 import { useAllCountriesInfo, useDailyData } from "../../queries/queries";
 import InlineSelect from "../select/InlineSelect";
 import { useRouter } from "next/router";
+import BoldTitle from "../title/BoldTitle";
 
 function Main({ initialCountry }) {
   const router = useRouter();
@@ -35,20 +36,16 @@ function Main({ initialCountry }) {
 
   return (
     <div>
-      <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
+      <BoldTitle>
         <InlineSelect country={country} query={countriesQuery} /> Cases
-      </h1>
+      </BoldTitle>
       <TotalCaseCount country={country} dark={dark} />
-      <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-        Timeseries Charts
-      </h1>
+      <BoldTitle>Timeseries Charts</BoldTitle>
       <DailyNewCases query={dailyData} dark={dark} />
       <DailyNewDeaths query={dailyData} dark={dark} />
       {router.pathname === "/" && (
         <div className="mt-16">
-          <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-            Reported Cases Table
-          </h1>
+          <BoldTitle>Reported Cases Table</BoldTitle>
           <AllDataTable />
         </div>
       )}
