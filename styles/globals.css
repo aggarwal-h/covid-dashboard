@@ -43,7 +43,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    @apply flex flex-col overflow-auto flex-grow;
+    @apply flex flex-col overflow-x-hidden flex-grow;
   }
 
   .sidebar-nav {
@@ -91,7 +91,7 @@
   }
 
   .table_header {
-    @apply sticky top-0 bg-gray-100 dark:bg-dark-900;
+    @apply sticky top-0 bg-gray-100 dark:bg-dark-900 z-10;
   }
 
   .table_row:not(.table_header):nth-child(2n + 1) {
