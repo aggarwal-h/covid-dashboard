@@ -5,15 +5,14 @@ export default async function (req, res) {
   try {
     const result = await prisma.$queryRaw`
       SELECT 
-        country_name, 
         date, 
-        SUM(cumulative_cases) as cumulative_cases, 
-        SUM(cumulative_deaths) as cumulative_deaths, 
-        SUM(new_cases) as new_cases, 
-        SUM(new_deaths) as new_deaths
-      FROM covid_timeseries 
-      WHERE LOWER(country_name) = LOWER(${country})
-      GROUP BY country_name, date
+        cumulative_cases as cumulative_cases, 
+        cumulative_deaths as cumulative_deaths, 
+        new_cases as new_cases, 
+        new_deaths as new_deaths
+      FROM covid_country_aggregated_view 
+      WHERE LOWER(country) = LOWER(${country})
+      ORDER BY date ASC
     `;
     res.status(200).json(result);
   } catch (e) {
