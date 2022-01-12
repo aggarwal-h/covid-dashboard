@@ -75,7 +75,9 @@ function AllDataTable() {
                 <Link
                   key={i}
                   href={
-                    country.country === "World" ? "/" : `/${country.country}`
+                    country.country === "World"
+                      ? "/"
+                      : `/${country.country.toLowerCase()}`
                   }
                 >
                   <a className="table_row">
@@ -94,6 +96,7 @@ function AllDataTable() {
                             layout="fixed"
                             src="/assets/img/earth.svg"
                             alt="earth"
+                            priority={true}
                           />
                         </span>
                       )}

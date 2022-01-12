@@ -33,6 +33,7 @@ function Sidebar({ initialSidebarMinimized }) {
                 height="100%"
                 objectFit="contain"
                 alt="COVID-dashboard-picture-large"
+                priority={true}
               />
             </span>
             <span className="block lg:hidden" id="covid-small-img">
@@ -43,6 +44,7 @@ function Sidebar({ initialSidebarMinimized }) {
                 height="80%"
                 objectFit="contain"
                 alt="COVID-dashboard-picture-svg"
+                priority={true}
               />
             </span>
           </a>

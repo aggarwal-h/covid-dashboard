@@ -74,7 +74,7 @@ function InlineSelect({ query, country }) {
             {query.data.map((country) => {
               return (
                 <li key={country}>
-                  <Link href={`/${country}`}>
+                  <Link href={`/${country.toLowerCase()}`}>
                     <a
                       className={classnames(
                         "block py-2 px-4 text-base hover:bg-gray-100 dark:hover:bg-dark-700 mx-1 rounded-lg",
