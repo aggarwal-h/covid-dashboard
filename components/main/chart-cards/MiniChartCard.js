@@ -20,12 +20,12 @@ function MiniChartCard({ title, info, options, series, type }) {
               />
             )}
           </div>
-          <div className="p-4">
-            <p className="text-2xl font-poppins font-bold text-gray-700 dark:text-gray-100 z-20">
+          <div className="p-4 relative z-20">
+            <p className="text-2xl font-poppins font-bold text-gray-700 dark:text-gray-100">
               {title || <SimpleSkeleton className="h-9 w-[60%]" />}
             </p>
             <div className="flex justify-end pt-20">
-              <p className="text-4xl font-poppins font-bold text-black dark:text-white z-20">
+              <p className="text-4xl font-poppins font-bold text-black dark:text-white">
                 {info || <SimpleSkeleton className="h-9 w-[200px]" />}
               </p>
             </div>
