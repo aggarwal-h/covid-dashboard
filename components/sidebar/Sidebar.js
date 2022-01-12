@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronDoubleLeftIcon,
   HomeIcon,
@@ -7,12 +7,18 @@ import {
 } from "@heroicons/react/outline";
 import SidebarItem from "./SidebarItem";
 import { useRouter } from "next/router";
-import { useLocalStorage } from "../../utils";
 import Link from "next/link";
+import classnames from "classnames";
+import Cookie from "js-cookie";
 
-function Sidebar() {
+function Sidebar({ initialSidebarMinimized }) {
   const router = useRouter();
-  const [minimized, setMinimized] = useLocalStorage("sidebar-minimized", false);
+  const [minimized, setMinimized] = useState(() =>
+    JSON.parse(initialSidebarMinimized || false)
+  );
+  useEffect(() => {
+    Cookie.set("sidebarMinimized", JSON.stringify(minimized));
+  }, [minimized]);
   return (
     <div className={`sidebar ${minimized ? "sidebar-minimized" : ""}`}>
       {/* Head */}
@@ -68,9 +74,12 @@ function Sidebar() {
           onClick={() => setMinimized(!minimized)}
         >
           <ChevronDoubleLeftIcon
-            className={`text-indigo-500 w-6 h-6 transition-transform duration-200 ${
-              minimized ? "rotate-180" : ""
-            }`}
+            className={classnames(
+              "text-indigo-500 w-6 h-6 transition-transform duration-200",
+              {
+                "rotate-180": minimized,
+              }
+            )}
           />
         </button>
       </div>

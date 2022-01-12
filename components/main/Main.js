@@ -7,9 +7,13 @@ import { useAllCountriesInfo, useDailyData } from "../../queries/queries";
 import InlineSelect from "../select/InlineSelect";
 import { useRouter } from "next/router";
 
-function Main() {
+function Main({ initialCountry }) {
   const router = useRouter();
-  const country = router.pathname === "/" ? "worldwide" : router.query.country;
+  const country = initialCountry
+    ? initialCountry
+    : router.pathname === "/"
+    ? "worldwide"
+    : router.query.country;
   const dailyData = useDailyData(country);
   const countriesQuery = useAllCountriesInfo();
   const [dark, setDark] = useState(false);
@@ -32,7 +36,7 @@ function Main() {
   return (
     <div>
       <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
-        <InlineSelect query={countriesQuery} /> Cases
+        <InlineSelect country={country} query={countriesQuery} /> Cases
       </h1>
       <TotalCaseCount country={country} dark={dark} />
       <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">

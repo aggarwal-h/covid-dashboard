@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import SimpleSkeleton from "../skeletons/SimpleSkeleton";
 
-function InlineSelect({ query }) {
+function InlineSelect({ query, country }) {
   const [selectOpen, setSelectOpen] = useState(false);
   const ref = useRef(null);
   const router = useRouter();
-  const selected = router.query.country;
+  const selected = country;
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -21,13 +21,6 @@ function InlineSelect({ query }) {
     };
   }, [ref]);
 
-  if (query.isLoading) {
-    return (
-      <span className="inline-block">
-        <SimpleSkeleton className="h-7 w-56" />
-      </span>
-    );
-  }
   return (
     <div
       className="inline-block cursor-pointer relative z-50"
