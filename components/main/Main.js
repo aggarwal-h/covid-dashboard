@@ -45,12 +45,12 @@ function Main({ initialCountry }) {
       <DailyNewCases query={dailyData} dark={dark} />
       <DailyNewDeaths query={dailyData} dark={dark} />
       {router.pathname === "/" && (
-        <React.Fragment>
+        <div className="mt-16">
           <h1 className="font-poppins font-bold text-4xl text-gray-800 dark:text-white text-center md:text-left">
             Reported Cases Table
           </h1>
           <AllDataTable />
-        </React.Fragment>
+        </div>
       )}
     </div>
   );

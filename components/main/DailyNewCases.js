@@ -1,15 +1,16 @@
 import React from "react";
+import Card, { CardBody, CardHeader } from "../card/Card";
 import TimeSeriesBarChart from "../charts/TimeSeriesBarChart";
 
 function DailyNewCases({ dark, query }) {
   return (
-    <div className="card">
-      <div className="card-header">
+    <Card>
+      <CardHeader>
         <p className="text-xl font-poppins font-bold dark:text-gray-100">
           Daily New Cases
         </p>
-      </div>
-      <div className="card-body">
+      </CardHeader>
+      <CardBody>
         <TimeSeriesBarChart
           dark={dark}
           query={query}
@@ -18,8 +19,8 @@ function DailyNewCases({ dark, query }) {
           valueDataName="new_cases"
           dateFormat="YYYY-MM-DD"
         />
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   );
 }
 
