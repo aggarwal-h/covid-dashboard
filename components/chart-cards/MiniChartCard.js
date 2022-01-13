@@ -1,6 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import SimpleSkeleton from "../../skeletons/SimpleSkeleton";
+import SimpleSkeleton from "../skeletons/SimpleSkeleton";
 import classnames from "classnames";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });

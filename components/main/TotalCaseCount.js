@@ -1,7 +1,7 @@
 import React from "react";
 import { numberWithCommas } from "../../utils";
 import { usePreviousDays } from "../../queries/queries";
-import MiniChartCard from "./chart-cards/MiniChartCard";
+import MiniChartCard from "../chart-cards/MiniChartCard";
 
 const PREVIOUS_DAYS = 7;
 
@@ -121,7 +121,7 @@ function TotalCaseCount({ dark, country }) {
       <MiniChartCard
         title="Recovered"
         info={queryData.isLoading ? null : numberWithCommas(0)}
-        detail={"+" + numberWithCommas(0)}
+        detail={queryData.isLoading ? null : "+" + numberWithCommas(0)}
         detailColor="text-green-500"
         options={
           queryData.isLoading ? null : { ...options, colors: ["#3DBAA2"] }
