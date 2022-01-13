@@ -5,6 +5,7 @@ import { useCountriesToday } from "../../queries/queries";
 import { numberWithCommas } from "../../utils";
 import Link from "next/link";
 import Image from "next/image";
+import classnames from "classnames";
 import SimpleSkeleton from "../skeletons/SimpleSkeleton";
 
 function AllDataTable() {
@@ -80,7 +81,11 @@ function AllDataTable() {
                       : `/${country.country.toLowerCase()}`
                   }
                 >
-                  <a className="table_row">
+                  <a
+                    className={classnames("table_row", {
+                      "pointer-events-none": country.country === "World",
+                    })}
+                  >
                     <div className="table_cell">
                       <span className="ml-2">{i}</span>
                     </div>
