@@ -14,6 +14,10 @@ class MyDocument extends Document {
           <meta name="language" content="English" />
           <meta name="revisit-after" content="1 days" />
           <meta property="og:image" content="/assets/img/covid_large.png" />
+          <meta
+            name="google-site-verification"
+            content="ZiSxnIjn5yZyBU0Sw72JvfDjh-B84Xspy-qO7EHVlTM"
+          />
         </Head>
         <body>
           <Main />
