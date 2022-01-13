@@ -129,14 +129,6 @@
     @apply rounded-tr-lg;
   }
 
-  /* .table_row .table_cell:first-child {
-    @apply rounded-tl-xl rounded-bl-xl;
-  }
-
-  .table_row .table_cell-child {
-    @apply rounded-tr-xl rounded-br-xl;
-  } */
-
   html {
     @apply dark:bg-dark-800;
   }
@@ -173,4 +165,8 @@
       transform: translateX(100%);
     }
   }
+}
+
+#nprogress .bar {
+  background: rgb(37 99 235) !important;
 }
