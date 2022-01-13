@@ -78,7 +78,7 @@ function AllDataTable() {
                   href={
                     country.country === "World"
                       ? "/"
-                      : `/${country.country.toLowerCase()}`
+                      : `/country/${country.country.toLowerCase()}`
                   }
                 >
                   <a

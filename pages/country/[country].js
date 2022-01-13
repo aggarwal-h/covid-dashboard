@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import Content from "../components/content/Content";
-import Sidebar from "../components/sidebar/Sidebar";
-import Main from "../components/main/Main";
-import { parseCookies, capitalize } from "../utils";
+import Content from "../../components/content/Content";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Main from "../../components/main/Main";
+import { parseCookies, capitalize } from "../../utils";
 import axios from "axios";
 import ErrorPage from "next/error";
 
