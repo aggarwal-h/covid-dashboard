@@ -71,7 +71,7 @@ function InlineSelect({ query, country }) {
                 </a>
               </Link>
             </li>
-            {query.data.map((country) => {
+            {query.data?.map((country) => {
               return (
                 <li key={country}>
                   <Link href={`/country/${country.toLowerCase()}`}>

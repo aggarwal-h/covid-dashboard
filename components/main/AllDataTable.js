@@ -60,14 +60,14 @@ function AllDataTable() {
           )}
           {query.isLoading ? (
             loadingRows()
-          ) : query.data.length === 0 ? (
+          ) : query.data?.length === 0 ? (
             <div className="table_row">
               <p className="p-6 text-lg">
                 No data available yet. Try again later.
               </p>
             </div>
           ) : (
-            query.data.map((country, i) => {
+            query.data?.map((country, i) => {
               let Flag = null;
               if (countries.includes(country.country_code)) {
                 Flag = Flags[country.country_code];

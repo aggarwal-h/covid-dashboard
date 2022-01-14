@@ -68,7 +68,7 @@ function TimeSeriesBarChart({
   };
 
   if (!query.isLoading) {
-    for (let i = 0; i < query.data.length; i++) {
+    for (let i = 0; i < query.data?.length; i++) {
       data.timeData.push(
         moment(query.data[i][timeDataName]).format(dateFormat)
       );
