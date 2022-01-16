@@ -2,11 +2,15 @@ import React from "react";
 import Flags from "country-flag-icons/react/3x2";
 import { countries } from "country-flag-icons";
 import { useCountriesToday } from "../../queries/queries";
-import { numberWithCommas } from "../../utils";
+import numeral from "numeral";
 import Link from "next/link";
 import Image from "next/image";
 import classnames from "classnames";
 import SimpleSkeleton from "../skeletons/SimpleSkeleton";
+import {
+  NUMERAL_NUMBER_FORMAT,
+  NUMERAL_SIGNED_NUMBER_FORMAT,
+} from "../../constants";
 
 function AllDataTable() {
   const query = useCountriesToday();
@@ -108,18 +112,24 @@ function AllDataTable() {
                     </div>
                     <div className="table_cell">{country.country}</div>
                     <div className="table_cell">
-                      {numberWithCommas(country.total_cases)}
+                      {numeral(country.total_cases).format(
+                        NUMERAL_NUMBER_FORMAT
+                      )}
                     </div>
                     <div className="table_cell text-blue-500">
-                      {country.new_cases > 0 ? "+" : ""}
-                      {numberWithCommas(country.new_cases)}
+                      {numeral(country.new_cases).format(
+                        NUMERAL_SIGNED_NUMBER_FORMAT
+                      )}
                     </div>
                     <div className="table_cell">
-                      {numberWithCommas(country.total_deaths)}
+                      {numeral(country.total_deaths).format(
+                        NUMERAL_NUMBER_FORMAT
+                      )}
                     </div>
                     <div className="table_cell text-red-500">
-                      {country.new_deaths > 0 ? "+" : ""}
-                      {numberWithCommas(country.new_deaths)}
+                      {numeral(-1 * country.new_deaths).format(
+                        NUMERAL_SIGNED_NUMBER_FORMAT
+                      )}
                     </div>
                   </a>
                 </Link>

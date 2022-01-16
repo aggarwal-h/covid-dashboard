@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import moment from "moment";
 import * as echarts from "echarts";
-import * as numeral from "numeral";
+import numeral from "numeral";
+import {
+  NUMERAL_NUMBER_FORMAT,
+  NUMERAL_NUMBER_FORMAT_SHORT,
+} from "../../constants";
 
 function TimeSeriesBarChart({
   dark,
@@ -87,7 +91,7 @@ function TimeSeriesBarChart({
       bottom: 30,
       right: 10,
       top: 10,
-      left: mobile ? 40 : 60,
+      left: mobile ? 40 : 65,
     },
     dataZoom: [
       {
@@ -113,7 +117,9 @@ function TimeSeriesBarChart({
       },
       axisLabel: {
         formatter: function (value) {
-          return mobile ? numeral(value).format("0.[0]a") : value;
+          return mobile
+            ? numeral(value).format(NUMERAL_NUMBER_FORMAT_SHORT)
+            : numeral(value).format(NUMERAL_NUMBER_FORMAT);
         },
       },
     },

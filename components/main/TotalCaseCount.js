@@ -1,7 +1,11 @@
 import React from "react";
-import { numberWithCommas } from "../../utils";
 import { usePreviousDays } from "../../queries/queries";
 import MiniChartCard from "../chart-cards/MiniChartCard";
+import numeral from "numeral";
+import {
+  NUMERAL_NUMBER_FORMAT,
+  NUMERAL_SIGNED_NUMBER_FORMAT,
+} from "../../constants";
 
 const PREVIOUS_DAYS = 7;
 
@@ -76,12 +80,15 @@ function TotalCaseCount({ dark, country }) {
     <div className="flex flex-row flex-wrap mb-16 p-2">
       <MiniChartCard
         title="Cases"
-        info={numberWithCommas(queryData.data?.total_cases)}
+        info={numeral(queryData.data?.total_cases).format(
+          NUMERAL_NUMBER_FORMAT
+        )}
         detail={
           queryData.isLoading
             ? null
-            : (queryData.data?.new_deaths >= 0 ? "+" : "") +
-              numberWithCommas(queryData.data?.new_cases)
+            : numeral(queryData.data?.new_cases).format(
+                NUMERAL_SIGNED_NUMBER_FORMAT
+              )
         }
         detailColor="text-blue-500"
         options={options}
@@ -98,12 +105,15 @@ function TotalCaseCount({ dark, country }) {
       />
       <MiniChartCard
         title="Deaths"
-        info={numberWithCommas(queryData.data?.total_deaths)}
+        info={numeral(queryData.data?.total_deaths).format(
+          NUMERAL_NUMBER_FORMAT
+        )}
         detail={
           queryData.isLoading
             ? null
-            : (queryData.data?.new_deaths >= 0 ? "+" : "") +
-              numberWithCommas(queryData.data?.new_deaths)
+            : numeral(queryData.data?.new_deaths).format(
+                NUMERAL_SIGNED_NUMBER_FORMAT
+              )
         }
         detailColor="text-red-500"
         options={{ ...options, colors: ["#FF7A68"] }}
@@ -120,8 +130,14 @@ function TotalCaseCount({ dark, country }) {
       />
       <MiniChartCard
         title="Recovered"
-        info={queryData.isLoading ? null : numberWithCommas(0)}
-        detail={queryData.isLoading ? null : "+" + numberWithCommas(0)}
+        info={
+          queryData.isLoading ? null : numeral(0).format(NUMERAL_NUMBER_FORMAT)
+        }
+        detail={
+          queryData.isLoading
+            ? null
+            : numeral(0).format(NUMERAL_SIGNED_NUMBER_FORMAT)
+        }
         detailColor="text-green-500"
         options={
           queryData.isLoading ? null : { ...options, colors: ["#3DBAA2"] }

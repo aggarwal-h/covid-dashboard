@@ -1,10 +1,6 @@
 import { useState } from "react";
 import cookie from "cookie";
 
-export function numberWithCommas(x) {
-  return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 // Hook for Local Storage (credit: https://usehooks.com/useLocalStorage/)
 export function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
