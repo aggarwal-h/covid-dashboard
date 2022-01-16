@@ -6,6 +6,7 @@ import Main from "../../components/main/Main";
 import { parseCookies, capitalize } from "../../utils";
 import axios from "axios";
 import ErrorPage from "next/error";
+import Navbar from "../../components/navbar/Navbar";
 
 export default function CountryPage({
   initialSidebarMinimized,
@@ -28,6 +29,7 @@ export default function CountryPage({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
+      <Navbar />
       <Sidebar initialSidebarMinimized={initialSidebarMinimized} />
       <Content>
         <Main initialCountry={country} />

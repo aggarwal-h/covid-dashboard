@@ -3,6 +3,7 @@ import Content from "../components/content/Content";
 import Sidebar from "../components/sidebar/Sidebar";
 import Main from "../components/main/Main";
 import { parseCookies } from "../utils";
+import Navbar from "../components/navbar/Navbar";
 
 export default function Home({ initialSidebarMinimized }) {
   return (
@@ -20,6 +21,7 @@ export default function Home({ initialSidebarMinimized }) {
           content="Visualize cases, deaths and recoveries from COVID-19 around the world!"
         />
       </Head>
+      <Navbar />
       <Sidebar initialSidebarMinimized={initialSidebarMinimized} />
       <Content>
         <Main />

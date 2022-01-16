@@ -26,7 +26,7 @@ function InlineSelect({ query, country }) {
   return (
     <div
       className={classnames(
-        "inline-block cursor-pointer relative z-50 py-2 px-4 bg-gray-100 dark:bg-dark-900 rounded-3xl active:scale-[100%] scale-[101%] transition-transform duration-100",
+        "inline-block cursor-pointer relative z-40 py-2 px-4 bg-gray-100 dark:bg-dark-900 rounded-3xl active:scale-[100%] scale-[101%] transition-transform duration-100",
         {
           "scale-[101%]": selectOpen,
         }

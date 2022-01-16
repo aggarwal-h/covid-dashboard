@@ -4,6 +4,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { parseCookies } from "../utils";
 import BoldTitle from "../components/title/BoldTitle";
+import Navbar from "../components/navbar/Navbar";
 
 export default function Map({ initialSidebarMinimized }) {
   return (
@@ -11,11 +12,11 @@ export default function Map({ initialSidebarMinimized }) {
       <Head>
         <title>COVID-19: Map</title>
       </Head>
+      <Navbar />
       <Sidebar initialSidebarMinimized={initialSidebarMinimized} />
       <Content>
         <BoldTitle>This page is in development.</BoldTitle>
       </Content>
-      <ReactQueryDevtools initialIsOpen={false} />
     </div>
   );
 }

@@ -12,7 +12,7 @@
   }
 
   .main-content {
-    @apply flex flex-col flex-auto overflow-auto min-h-screen pl-0 transition-[padding] duration-200 dark:bg-dark-800;
+    @apply flex flex-col flex-auto overflow-auto min-h-screen pl-0 mt-10 sm:mt-0 transition-[padding] duration-200 dark:bg-dark-800;
   }
 
   .sidebar {
