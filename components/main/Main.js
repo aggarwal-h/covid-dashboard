@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import AllDataTable from "./AllDataTable";
 import DailyNewCases from "./DailyNewCases";
 import DailyNewDeaths from "./DailyNewDeaths";
 import TotalCaseCount from "./TotalCaseCount";
 import { useAllCountriesInfo, useDailyData } from "../../queries/queries";
 import InlineSelect from "../select/InlineSelect";
-import { useRouter } from "next/router";
 import BoldTitle from "../title/BoldTitle";
+import dynamic from "next/dynamic";
+import useInView from "react-cool-inview";
 
-function Main({ initialCountry }) {
-  const router = useRouter();
-  const country = initialCountry
-    ? initialCountry
-    : router.pathname === "/"
-    ? "worldwide"
-    : router.query.country;
+const AllDataTable = dynamic(() => import("./AllDataTable"));
+
+function Main({ initialCountry: country }) {
   const dailyData = useDailyData(country);
   const countriesQuery = useAllCountriesInfo();
   const [dark, setDark] = useState(false);
+
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(),
+  });
 
   useEffect(() => {
     const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
@@ -43,10 +43,11 @@ function Main({ initialCountry }) {
       <BoldTitle>Timeseries Charts</BoldTitle>
       <DailyNewCases query={dailyData} dark={dark} />
       <DailyNewDeaths query={dailyData} dark={dark} />
-      {router.pathname === "/" && (
+      <span ref={observe} />
+      {country === "worldwide" && (
         <div className="mt-16">
           <BoldTitle>Reported Cases Table</BoldTitle>
-          <AllDataTable />
+          {inView && <AllDataTable />}
         </div>
       )}
     </div>

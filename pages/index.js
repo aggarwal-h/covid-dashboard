@@ -24,7 +24,7 @@ export default function Home({ initialSidebarMinimized }) {
       <Navbar />
       <Sidebar initialSidebarMinimized={initialSidebarMinimized} />
       <Content>
-        <Main />
+        <Main initialCountry="worldwide" />
       </Content>
     </div>
   );
