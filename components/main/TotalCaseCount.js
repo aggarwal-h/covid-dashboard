@@ -80,9 +80,11 @@ function TotalCaseCount({ dark, country }) {
     <div className="flex flex-row flex-wrap mb-16 p-2">
       <MiniChartCard
         title="Cases"
-        info={numeral(queryData.data?.total_cases).format(
-          NUMERAL_NUMBER_FORMAT
-        )}
+        info={
+          queryData.isLoading
+            ? null
+            : numeral(queryData.data?.total_cases).format(NUMERAL_NUMBER_FORMAT)
+        }
         detail={
           queryData.isLoading
             ? null
@@ -105,9 +107,13 @@ function TotalCaseCount({ dark, country }) {
       />
       <MiniChartCard
         title="Deaths"
-        info={numeral(queryData.data?.total_deaths).format(
-          NUMERAL_NUMBER_FORMAT
-        )}
+        info={
+          queryData.isLoading
+            ? null
+            : numeral(queryData.data?.total_deaths).format(
+                NUMERAL_NUMBER_FORMAT
+              )
+        }
         detail={
           queryData.isLoading
             ? null
