@@ -42,8 +42,8 @@ function Main({ initialCountry: country }) {
       <TotalCaseCount country={country} dark={dark} />
       <BoldTitle>Timeseries Charts</BoldTitle>
       <DailyNewCases query={dailyData} dark={dark} />
-      <DailyNewDeaths query={dailyData} dark={dark} />
       <span ref={observe} />
+      <DailyNewDeaths query={dailyData} dark={dark} />
       {country === "worldwide" && (
         <div className="mt-16">
           <BoldTitle>Reported Cases Table</BoldTitle>
