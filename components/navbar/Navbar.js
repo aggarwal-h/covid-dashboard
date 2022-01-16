@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
   return (
     <nav
       className={classnames(
@@ -37,7 +36,7 @@ function Navbar() {
       </div>
       <div
         className={classnames(
-          "w-full bg-gray-50 dark:bg-dark-900 px-10 pt-2 pb-6 cursor-pointer rounded-3xl",
+          "w-full bg-gray-50 dark:bg-dark-900 px-10 pt-2 pb-6 rounded-3xl",
           {
             "hidden rounded-2xl": !open,
             "block shadow-xl": open,
@@ -45,35 +44,30 @@ function Navbar() {
         )}
       >
         <ul className="flex flex-col">
-          <li>
-            <Link href="/">
-              <a
-                className={classnames("block rounded-xl p-3 mt-2", {
-                  "bg-blue-600 text-white": router.pathname === "/",
-                  "bg-gray-100 dark:bg-dark-700 dark:text-white":
-                    router.pathname !== "/",
-                })}
-              >
-                Home
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/map">
-              <a
-                className={classnames("block rounded-xl p-3 mt-2", {
-                  "bg-blue-600 text-white": router.pathname === "/map",
-                  "bg-gray-100 text-black dark:bg-dark-700 dark:text-white":
-                    router.pathname !== "/map",
-                })}
-              >
-                Maps
-              </a>
-            </Link>
-          </li>
+          <NavbarListItem href="/" title="Home" />
+          <NavbarListItem href="/map" title="Maps" />
         </ul>
       </div>
     </nav>
+  );
+}
+
+function NavbarListItem({ href, title }) {
+  const router = useRouter();
+  return (
+    <li>
+      <Link href={href}>
+        <a
+          className={classnames("block rounded-xl p-3 mt-2", {
+            "bg-blue-600 text-white": router.pathname === href,
+            "bg-gray-100 dark:bg-dark-700 dark:text-white":
+              router.pathname !== href,
+          })}
+        >
+          {title}
+        </a>
+      </Link>
+    </li>
   );
 }
 
