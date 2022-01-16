@@ -69,8 +69,8 @@ function AllDataTable() {
           ) : (
             query.data?.map((country, i) => {
               let Flag = null;
-              if (countries.includes(country.country_code)) {
-                Flag = Flags[country.country_code];
+              if (countries.includes(country.iso_code_2)) {
+                Flag = Flags[country.iso_code_2];
               }
               return (
                 <Link
@@ -108,14 +108,14 @@ function AllDataTable() {
                     </div>
                     <div className="table_cell">{country.country}</div>
                     <div className="table_cell">
-                      {numberWithCommas(country.cumulative_cases)}
+                      {numberWithCommas(country.total_cases)}
                     </div>
                     <div className="table_cell text-blue-500">
                       {country.new_cases > 0 ? "+" : ""}
                       {numberWithCommas(country.new_cases)}
                     </div>
                     <div className="table_cell">
-                      {numberWithCommas(country.cumulative_deaths)}
+                      {numberWithCommas(country.total_deaths)}
                     </div>
                     <div className="table_cell text-red-500">
                       {country.new_deaths > 0 ? "+" : ""}

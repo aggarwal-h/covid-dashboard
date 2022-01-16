@@ -5,9 +5,9 @@ export default async function (req, res) {
   try {
     const result = await prisma.$queryRaw`
     SELECT EXISTS 
-      (SELECT country_name 
+      (SELECT country 
         FROM countries 
-        WHERE LOWER(country_name) = LOWER(${country})
+        WHERE LOWER(country) = LOWER(${country})
       )`;
     res.status(200).json(result[0].exists);
   } catch (e) {

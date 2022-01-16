@@ -3,11 +3,11 @@ import { prisma } from "../../../prisma/db";
 export default async function (req, res) {
   try {
     const result = await prisma.$queryRaw`
-      SELECT DISTINCT country_name
+      SELECT country
       FROM countries
-      ORDER BY country_name ASC
+      ORDER BY country ASC
     `;
-    res.status(200).json(result?.map((country) => country.country_name));
+    res.status(200).json(result?.map((country) => country.country));
   } catch (e) {
     res.status(500).json({ error: "Unable to fetch all cases.", e });
   } finally {

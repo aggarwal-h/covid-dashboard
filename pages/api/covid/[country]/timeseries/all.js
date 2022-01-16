@@ -6,11 +6,11 @@ export default async function (req, res) {
     const result = await prisma.$queryRaw`
       SELECT 
         date, 
-        cumulative_cases as cumulative_cases, 
-        cumulative_deaths as cumulative_deaths, 
-        new_cases as new_cases, 
-        new_deaths as new_deaths
-      FROM covid_country_aggregated_view 
+        total_cases as cumulative_cases, 
+        total_deaths as cumulative_deaths, 
+        new_cases, 
+        new_deaths
+      FROM covid_timeseries_by_country 
       WHERE LOWER(country) = LOWER(${country})
       ORDER BY date ASC
     `;

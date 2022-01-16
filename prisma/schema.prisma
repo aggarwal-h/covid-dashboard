@@ -8,29 +8,21 @@ datasource db {
 }
 
 model countries {
-  country_name         String             @db.VarChar(80)
-  province_state_name  String             @db.VarChar(80)
-  county_name          String             @db.VarChar(80)
-  continent_name       String?            @db.VarChar(80)
-  county_fips_number   String?            @db.VarChar(10)
-  country_alpha_3_code String?            @db.Char(3)
-  country_alpha_2_code String?            @db.Char(2)
-  covid_timeseries     covid_timeseries[]
-
-  @@id([country_name, province_state_name, county_name])
+  country                     String                        @id @db.VarChar(32)
+  continent                   String?                       @db.VarChar(13)
+  iso_code                    String?                       @db.VarChar(8)
+  iso_code_2                  String?                       @db.Char(2)
+  covid_timeseries_by_country covid_timeseries_by_country[]
 }
 
-model covid_timeseries {
-  country_name        String    @db.VarChar(80)
-  province_state_name String    @db.VarChar(80)
-  county_name         String    @db.VarChar(80)
-  date                DateTime  @db.Date
-  cumulative_cases    Int?
-  cumulative_deaths   Int?
-  new_cases           Int?
-  new_deaths          Int?
-  data_source_name    String?   @db.VarChar(80)
-  countries           countries @relation(fields: [country_name, province_state_name, county_name], references: [country_name, province_state_name, county_name], onDelete: NoAction, onUpdate: NoAction)
+model covid_timeseries_by_country {
+  country      String    @db.VarChar(32)
+  date         DateTime  @db.Date
+  total_cases  Decimal?  @db.Decimal
+  new_cases    Decimal?  @db.Decimal
+  total_deaths Decimal?  @db.Decimal
+  new_deaths   Decimal?  @db.Decimal
+  countries    countries @relation(fields: [country], references: [country], onDelete: NoAction, onUpdate: NoAction)
 
-  @@id([country_name, province_state_name, county_name, date])
+  @@id([country, date])
 }

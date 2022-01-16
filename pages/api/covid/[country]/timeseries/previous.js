@@ -8,19 +8,19 @@ export default async function (req, res) {
 
     const total = await prisma.$queryRaw`
       SELECT 
-        cumulative_cases as total_cases, 
-        cumulative_deaths as total_deaths,
+        total_cases, 
+        total_deaths,
         new_cases,
         new_deaths
-      FROM covid_country_aggregated_view
+      FROM covid_timeseries_by_country
       WHERE 
-        date = (SELECT MAX(date) FROM covid_country_aggregated_view) 
+        date = (SELECT MAX(date) FROM covid_timeseries_by_country) 
         AND LOWER(country) = LOWER(${country})
     `;
 
     const cases = await prisma.$queryRaw`
       SELECT date, new_cases as total_cases, new_deaths as total_deaths 
-      FROM covid_country_aggregated_view
+      FROM covid_timeseries_by_country
       WHERE 
         date > CURRENT_DATE - ${days}::TEXT::INTERVAL 
         AND LOWER(country) = LOWER(${country})
