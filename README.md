@@ -1,15 +1,17 @@
-## COVID DASHBOARD
+## COVID-19 Dashboard
 
-This is an in-development dashboard to visualize new and cumulating COVID-19 cases around the world.
+This is an _in-development_ dashboard to visualize new and cumulating COVID-19 cases around the world.
 
-_Features to come_:
+**Preview**:
+
+![preview](/public/assets/img/preview.png?raw=true)
+
+**Features to come**:
 
 - Resizable Sidebar
-- Map to show cases around the world
-- Detail by date
-- Better mobile support
-- Add navigation for mobile
+- Map to show cases around the world (and per country)
+- Detailed pages by date
 
-_Known Bugs_:
+**Known Bugs**:
 
 - Scroll restoration broken because of flex sidebar and overflow-auto
