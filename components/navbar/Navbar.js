@@ -18,14 +18,18 @@ function Navbar() {
       )}
     >
       <div className="container flex flex-wrap justify-between items-center mx-auto px-6">
-        <Image
-          src="/assets/img/covid.svg"
-          width="50%"
-          height="40%"
-          objectFit="contain"
-          alt="COVID-dashboard-picture-svg"
-          priority={true}
-        />
+        <Link href="/">
+          <a>
+            <Image
+              src="/assets/img/covid.svg"
+              width="50%"
+              height="40%"
+              objectFit="contain"
+              alt="COVID-dashboard-picture-svg"
+              priority={true}
+            />
+          </a>
+        </Link>
         <button onClick={() => setOpen((open) => !open)}>
           {open ? (
             <XIcon className="w-6 h-6 dark:text-white" />
