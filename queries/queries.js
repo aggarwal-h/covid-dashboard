@@ -65,6 +65,7 @@ export function useAllCountriesInfo() {
     },
     {
       refetchOnWindowFocus: false,
+      staleTime: Infinity,
     }
   );
 }
