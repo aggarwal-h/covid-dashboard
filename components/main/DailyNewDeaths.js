@@ -1,7 +1,7 @@
 import Card, { CardBody, CardHeader } from "../card/Card";
 import TimeSeriesBarChart from "../charts/TimeSeriesBarChart";
 
-function DailyNewDeaths({ dark, query }) {
+function DailyNewDeaths({ dark, query, chartRef }) {
   return (
     <Card>
       <CardHeader>
@@ -17,6 +17,7 @@ function DailyNewDeaths({ dark, query }) {
           timeDataName="date"
           valueDataName="new_deaths"
           dateFormat="YYYY-MM-DD"
+          chartRef={chartRef}
         />
       </CardBody>
     </Card>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import moment from "moment";
 import * as echarts from "echarts";
@@ -15,8 +15,8 @@ function TimeSeriesBarChart({
   timeDataName,
   valueDataName,
   dateFormat,
+  chartRef: chart,
 }) {
-  const chart = useRef(null);
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
     adjustWidth();
@@ -146,4 +146,4 @@ function TimeSeriesBarChart({
   );
 }
 
-export default TimeSeriesBarChart;
+export default React.memo(TimeSeriesBarChart);

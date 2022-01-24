@@ -55,4 +55,4 @@ function MiniChartCard({
   );
 }
 
-export default MiniChartCard;
+export default React.memo(MiniChartCard);
