@@ -2,6 +2,8 @@
 
 This is an _in-development_ dashboard to visualize new and cumulating COVID-19 cases around the world.
 
+Update: The dataset being used is no longer supported. As a result, this project is no longer being maintained.
+
 **Preview**:
 
 ![preview](/public/assets/img/preview.png?raw=true)
